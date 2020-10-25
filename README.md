@@ -5,3 +5,5 @@ Proyecto de la asignatura de Procesadores de Lenguajes
 
 ### KENNY JESÚS FLORES HUAMÁN
 ### DARÍO LÓPEZ
+### MANUEL BAREA LÓPEZ
+### ANA MARIA REGUERA

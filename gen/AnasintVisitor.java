@@ -1,4 +1,4 @@
-// Generated from /home/kenny/IdeaProjects/Proyecto-ANKEMADA/src/Anasint.g4 by ANTLR 4.8
+// Generated from C:/Users/Manuel/OneDrive/Documentos/Grado Ing Informatica/4º/PL2020/PROCESADORES DE LENGUAJES/Proyecto-ANKEMADA/src\Anasint.g4 by ANTLR 4.8
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
 /**
@@ -10,11 +10,17 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface AnasintVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link Anasint#sentencia}.
+	 * Visit a parse tree produced by {@link Anasint#programa}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitSentencia(Anasint.SentenciaContext ctx);
+	T visitPrograma(Anasint.ProgramaContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Anasint#codigo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCodigo(Anasint.CodigoContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link Anasint#variables}.
 	 * @param ctx the parse tree
@@ -22,91 +28,21 @@ public interface AnasintVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitVariables(Anasint.VariablesContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link Anasint#tipo}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTipo(Anasint.TipoContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link Anasint#decl_vars}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitDecl_vars(Anasint.Decl_varsContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Expr_Y_O}
-	 * labeled alternative in {@link Anasint#expr}.
+	 * Visit a parse tree produced by {@link Anasint#vars}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpr_Y_O(Anasint.Expr_Y_OContext ctx);
+	T visitVars(Anasint.VarsContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code Expr_NO}
-	 * labeled alternative in {@link Anasint#expr}.
+	 * Visit a parse tree produced by {@link Anasint#tipo}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitExpr_NO(Anasint.Expr_NOContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Rel}
-	 * labeled alternative in {@link Anasint#expr}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRel(Anasint.RelContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Rel_MAYOR_MENOR_IGUAL}
-	 * labeled alternative in {@link Anasint#expr1}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRel_MAYOR_MENOR_IGUAL(Anasint.Rel_MAYOR_MENOR_IGUALContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Term}
-	 * labeled alternative in {@link Anasint#expr1}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitTerm(Anasint.TermContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link Anasint#expr2}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitExpr2(Anasint.Expr2Context ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Id}
-	 * labeled alternative in {@link Anasint#expr3}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitId(Anasint.IdContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code Num}
-	 * labeled alternative in {@link Anasint#expr3}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitNum(Anasint.NumContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code T}
-	 * labeled alternative in {@link Anasint#expr3}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitT(Anasint.TContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code F}
-	 * labeled alternative in {@link Anasint#expr3}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitF(Anasint.FContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code ParExpr}
-	 * labeled alternative in {@link Anasint#expr3}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitParExpr(Anasint.ParExprContext ctx);
+	T visitTipo(Anasint.TipoContext ctx);
 }

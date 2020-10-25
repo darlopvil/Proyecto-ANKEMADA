@@ -1,2 +1,5 @@
-x booleano, y entero;
-NO x + y - 3
+VARIABLES
+
+i,max,min:NUM;
+
+s:SEQ(NUM);

@@ -1,50 +1,68 @@
 //Diseño Analizador sintáctico lenguaje P
 
-programa: variables cabecera subprogramas instrucciones ;
+programa: variables subprogramas instrucciones ;
 
-cabecera: (FUNCION | PROCEDIMIENTO)+ ;
-//Bien puede haber una funcion o un procedimiento
-//pero al menos a de estar uno de los 2, de ahí el "+"
+//##########    SUBPROGRAMAS    #################
+subprogramas: SUBPROGRAMAS (funcion | procedimiento)*;
+//-----------FUNCIONES--------------
+funcion : FUNCION cuerpo ;
 
-variables: VARIABLES idents DOS_PUNTOS tipo PyC;
+cuerpo: IDENT PA (params)? PC DEV PA params PC; //puede tener conjunto vacio de entrada
+                                                //NO puede tener conjunto vacio de salida
+params: tipo_func IDENT (COMA params)?;
+
+tipo_func: NUM | LOG | SEQ ;  //Podemos usar tipo_func o tipo , pero tipo necesita que
+                             // el inpunt sea de la forma SEQ(tipo)
+
+//---------PROCEDIMIENTOS----------------
+procedimiento: PROCEDIMIENTO encabezado_proc variables LLC;
+
+encabezado_proc: IDENT PA params PC; //Usamos params que ya esta definido, pero no tiene dev como la funcion
+
+
+//#######      VARIABLES    #################
+variables: VARIABLES (decl_vars)* ;
 //Seguimos el esquema de "i: NUM;"
 
-idents: (VAR COMA idents | VAR)* ;
-//Se pone entre parentesis porque hay ejemplos en los que no
-//se tiene por qué declarar variables
+decl_vars: vars DOS_PUNTOS tipo PyC;
 
-tipo: NUM | BOOLEANO | SECUENCIA;
-instrucciones: INSTRUCCIONES (asignacion|condicional|iteracion|ruptura_control |
-llamada_proc |llamada_fun | dev | mostrar | aserto |comen_linea |comen_bloque)*;
+vars: IDENT (COMA vars)?;
+
+tipo: NUM | BOOLEANO | SEQ PA tipo PC;
+
+//#######      INSTRUCCIONES    #################
+
+instrucciones: INSTRUCCIONES (asignacion|condicional|iteracion | aserto)*;
+
 //La cantidad de instrucciones se ven en la pagina 2 del doc
-
-asignacion: VAR COMA VAR | VAR IGUAL idents2;
-idents2: (NUM | VAR | CA | COMA | CC )*
-         | llamada_proc | llamada_fun;   //el resultado de llamar a una funcion o procedimiento
-                                         //puede guardarse en una/s variable/s
-
-condicional: SI PA elemento_de_sec PC LLA
-                asignacion
-             |SINO LLA asignacion //puede haber un if else tambien
-             LLC;
-elemento_de_sec: VAR CA VAR CC;
-/*pongamos de ejemplo (codigo de la pg3):
-*    si (s[i]>max) entonces
-*             max=s[i];
-*          fsi
+/*UPDATE: Eliminados el resto ya que ahora son
+*tokens globales, al llamarlos los invocamos
 */
+
+asignacion: tipo_asig IGUAL idents2 PyC;
+
+tipo_asig: (IDENT | COMA)+;       //util para ver si es una asig simple o en paralelo
+
+idents2: (NUM | VAR | CA | COMA | CC
+         | llamada_proc | llamada_fun)+;   //el resultado de llamar a una funcion o procedimiento
+                                         //o bien, puede guardarse en una/s variable/s
+                                         //TO-DO:como podria hacerse una asig en paralelo
+
+condicional: SI PA condicion PC LLA
+                asignacion
+             |SINO LLA (asignacion |llamada_proc | llamada_fun)*    //puede haber un if else tambien
+             asignacion
+             LLC;
+condicion: tipo_secuencia | asignacion | llamada_fun | llamada_proc ;
+
+/*La condicion puede ser de varias formas:
+*1.-s[i]>max lo cual seria "tipo_secuencia"
+*2.-x==3 lo cual seria "asignacion"
+*3.-es_mayor_que() lo cual podria ser una llamada_proc o llamada_fun
+
+tipo_secuencia: VAR CA VAR CC;
+
 
 iteracion: MIENTRAS PA asignacion PC LLA
                 condicional | f_avance;
 
-f_avance: LLA ???  LLC;  //Deberia funcionar como la llamada a una funcion
-
-
-
-//faltan:
-/*
-*   representar dev, mostrar, aserto
-*
-*
-*
-*/

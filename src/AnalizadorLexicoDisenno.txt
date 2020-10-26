@@ -1,19 +1,23 @@
 //Diseño Analizador léxico lenguaje P
 
 
-//+++++COMANDOS+++++
+//+++++TOKENS GLOBALES+++++
 VARIABLES: "VARIABLES"
 INSTRUCCIONES: "INSTRUCCIONES"
+SUBPROGRAMAS: 'SUBPROGRAMAS';
 PROCEDIMIENTO: "PROCEDIMIENTO"
+RUPTURA_CONTROL: 'BREAK';
+FUNCION: 'FUNCION';
+MOSTRAR: 'MOSTRAR';
 
 //+++++OPERADORES+++++
 MIENTRAS: "WHILE"
 SI:"IF"
 LLA: "{"  //Se puede re utilizar para los "hacer" de los "mientras"
 SINO: "if else"
-LLC:"}"  //Agloba "fmientras", "FFUNCION", "FPROCEDIMIENTO"
+LLC:"}"  //Agloba "FMIENTRAS", "FFUNCION", "FPROCEDIMIENTO"
 FINENTONCES: "}"
-DEVUELVE: "dev"
+DEV: "dev"
 DEF: "DEF"
 EVAL: "EVAL"
 BOOLEANO: "BOOL"
@@ -47,5 +51,9 @@ COMENTARIO_LINEA : '//' .*? FIN_LINEA -> skip ;
 
 //+++++TIPOS++++++
 VAR: ('a'|'b'|'c'|...|'z'|'0'|'1'|...|'9')*
-NUM: ('-')?('0'|'1'|...|'9')+
-SECUENCIA:"SEQ(NUM|BOOL)"
+NUMERO: ('-')?('0'|'1'|...|'9')+
+SECUENCIA: 'SEQ';
+NUM: 'NUM';
+LOG: 'LOG';
+SEQ: 'SEQ';
+IDENT: LETRA(LETRA|DIGITO|'_')*;

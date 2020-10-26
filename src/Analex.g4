@@ -8,11 +8,13 @@ FIN_LINEA: '\r'?'\n' ->skip;
 fragment DIGITO: [0-9];
 fragment LETRA:[a-zA-Z];
 
-//+++++COMANDOS+++++
+//+++++TOKENS GLOBALES+++++
 VARIABLES: 'VARIABLES';
 INSTRUCCIONES: 'INSTRUCCIONES';
+SUBPROGRAMAS: 'SUBPROGRAMAS';
 PROCEDIMIENTO: 'PROCEDIMIENTO';
 RUPTURA_CONTROL: 'BREAK';
+FUNCION: 'FUNCION';
 
 //+++++OPERADORES+++++
 MIENTRAS: 'WHILE';
@@ -21,7 +23,7 @@ LLA: '{'  ;//Se puede re utilizar para los 'hacer' de los 'mientras'
 SINO: 'if else';
 LLC:'}'  ;//Agloba 'fmientras', 'FFUNCION', 'FPROCEDIMIENTO'
 FINENTONCES: '}';
-DEVUELVE: 'dev';
+DEV: 'dev';
 DEF: 'DEF';
 EVAL: 'EVAL';
 BOOLEANO: 'BOOL';
@@ -55,5 +57,9 @@ COMENTARIO_LINEA : '//' .*? FIN_LINEA -> skip ;
 
 //+++++TIPOS++++++
 VAR: LETRA(LETRA|DIGITO)*;
-NUM: ('-')?DIGITO+;
-SECUENCIA:'SEQ(NUM|BOOL)';
+NUMERO: ('-')?DIGITO+;
+SECUENCIA: 'SEQ';
+NUM: 'NUM';
+LOG: 'LOG';
+SEQ: 'SEQ';
+IDENT: LETRA(LETRA|DIGITO|'_')*;

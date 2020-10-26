@@ -1,35 +1,36 @@
 // Analizador sintáctico lenguaje expr
 parser grammar Anasint;
 options{
-tokenVocab=Analex;
+ tokenVocab=Analex;
 }
-sentencia : variables expr EOF;
 
-variables : decl_vars PyC ;
+programa: codigo EOF;
 
-tipo: ENTERO
-    | BOOLEANO
-    ;
+codigo: variables  subprogramas ;
 
-decl_vars : IDENT tipo COMA decl_vars
-| IDENT tipo
-;
-expr : expr1 (Y expr | O expr) #Expr_Y_O
-| NO expr  #Expr_NO
-| expr1   #Rel
-;
+//#######        VARIABLES    #################
+variables: VARIABLES (decl_vars)*;
 
-expr1 : expr2 (MAYOR expr2 | MENOR expr2 | IGUAL expr2) #Rel_MAYOR_MENOR_IGUAL
-| expr2 #Term
-;
-expr2 : expr3 (MAS expr2 | MENOS expr2 | POR expr2)
-| expr3 (DIV expr2)
-| expr3
-;
+decl_vars: vars DP tipo PyC;
 
-expr3 : IDENT  #Id
-| NUMERO   #Num
-| CIERTO    #T
-| FALSO      #F
-| PA expr PC   #ParExpr
-;
+vars: IDENT (COMA vars)?; 
+
+tipo: NUM | LOG | SEQ PA tipo PC;
+
+//##########    SUBPROGRAMAS    #################
+subprogramas: SUBPROGRAMAS (funcion | procedimiento)*;
+//-----------FUNCIONES--------------
+funcion : FUNCION cuerpo ;
+
+cuerpo: IDENT PA (params)? PC DEV PA params PC; //puede tener conjunto vacio de entrada
+                                                //NO puede tener conjunto vacio de salida
+params: tipo_func IDENT (COMA params)?;
+
+tipo_func: NUM | LOG | SEQ ;  //Podemos usar tipo_func o tipo , pero tipo necesita que
+                             // el inpunt sea de la forma SEQ(tipo)
+
+//---------PROCEDIMIENTOS----------------
+procedimiento: PROCEDIMIENTO encabezado_proc variables FPROCEDIMIENTO;
+
+encabezado_proc: IDENT PA params PC; //Usamos params que ya esta definido, pero no tiene dev como la funcion
+

@@ -1,0 +1,50 @@
+//Diseño Analizador sintáctico lenguaje P
+
+programa: variables cabecera subprogramas instrucciones ;
+
+cabecera: (FUNCION | PROCEDIMIENTO)+ ;
+//Bien puede haber una funcion o un procedimiento
+//pero al menos a de estar uno de los 2, de ahí el "+"
+
+variables: VARIABLES idents DOS_PUNTOS tipo PyC;
+//Seguimos el esquema de "i: NUM;"
+
+idents: (VAR COMA idents | VAR)* ;
+//Se pone entre parentesis porque hay ejemplos en los que no
+//se tiene por qué declarar variables
+
+tipo: NUM | BOOLEANO | SECUENCIA;
+instrucciones: INSTRUCCIONES (asignacion|condicional|iteracion|ruptura_control |
+llamada_proc |llamada_fun | dev | mostrar | aserto |comen_linea |comen_bloque)*;
+//La cantidad de instrucciones se ven en la pagina 2 del doc
+
+asignacion: VAR COMA VAR | VAR IGUAL idents2;
+idents2: (NUM | VAR | CA | COMA | CC )*
+         | llamada_proc | llamada_fun;   //el resultado de llamar a una funcion o procedimiento
+                                         //puede guardarse en una/s variable/s
+
+condicional: SI PA elemento_de_sec PC LLA
+                asignacion
+             |SINO LLA asignacion //puede haber un if else tambien
+             LLC;
+elemento_de_sec: VAR CA VAR CC;
+/*pongamos de ejemplo (codigo de la pg3):
+*    si (s[i]>max) entonces
+*             max=s[i];
+*          fsi
+*/
+
+iteracion: MIENTRAS PA asignacion PC LLA
+                condicional | f_avance;
+
+f_avance: LLA ???  LLC;  //Deberia funcionar como la llamada a una funcion
+
+
+
+//faltan:
+/*
+*   representar dev, mostrar, aserto
+*
+*
+*
+*/

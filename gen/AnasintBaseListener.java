@@ -1,4 +1,4 @@
-// Generated from /home/kenny/IdeaProjects/Proyecto-ANKEMADA/src/Anasint.g4 by ANTLR 4.8
+// Generated from C:/Users/Manuel/OneDrive/Documentos/Grado Ing Informatica/4º/PL2020/PROCESADORES DE LENGUAJES/Proyecto-ANKEMADA/src\Anasint.g4 by ANTLR 4.8
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -15,13 +15,25 @@ public class AnasintBaseListener implements AnasintListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterSentencia(Anasint.SentenciaContext ctx) { }
+	@Override public void enterPrograma(Anasint.ProgramaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitSentencia(Anasint.SentenciaContext ctx) { }
+	@Override public void exitPrograma(Anasint.ProgramaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCodigo(Anasint.CodigoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCodigo(Anasint.CodigoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -39,18 +51,6 @@ public class AnasintBaseListener implements AnasintListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo(Anasint.TipoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTipo(Anasint.TipoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDecl_vars(Anasint.Decl_varsContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -63,133 +63,109 @@ public class AnasintBaseListener implements AnasintListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr_Y_O(Anasint.Expr_Y_OContext ctx) { }
+	@Override public void enterVars(Anasint.VarsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpr_Y_O(Anasint.Expr_Y_OContext ctx) { }
+	@Override public void exitVars(Anasint.VarsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr_NO(Anasint.Expr_NOContext ctx) { }
+	@Override public void enterTipo(Anasint.TipoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpr_NO(Anasint.Expr_NOContext ctx) { }
+	@Override public void exitTipo(Anasint.TipoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRel(Anasint.RelContext ctx) { }
+	@Override public void enterSubprogramas(Anasint.SubprogramasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRel(Anasint.RelContext ctx) { }
+	@Override public void exitSubprogramas(Anasint.SubprogramasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRel_MAYOR_MENOR_IGUAL(Anasint.Rel_MAYOR_MENOR_IGUALContext ctx) { }
+	@Override public void enterFuncion(Anasint.FuncionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRel_MAYOR_MENOR_IGUAL(Anasint.Rel_MAYOR_MENOR_IGUALContext ctx) { }
+	@Override public void exitFuncion(Anasint.FuncionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTerm(Anasint.TermContext ctx) { }
+	@Override public void enterCuerpo(Anasint.CuerpoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTerm(Anasint.TermContext ctx) { }
+	@Override public void exitCuerpo(Anasint.CuerpoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr2(Anasint.Expr2Context ctx) { }
+	@Override public void enterParams(Anasint.ParamsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitExpr2(Anasint.Expr2Context ctx) { }
+	@Override public void exitParams(Anasint.ParamsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterId(Anasint.IdContext ctx) { }
+	@Override public void enterTipo_func(Anasint.Tipo_funcContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitId(Anasint.IdContext ctx) { }
+	@Override public void exitTipo_func(Anasint.Tipo_funcContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNum(Anasint.NumContext ctx) { }
+	@Override public void enterProcedimiento(Anasint.ProcedimientoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNum(Anasint.NumContext ctx) { }
+	@Override public void exitProcedimiento(Anasint.ProcedimientoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterT(Anasint.TContext ctx) { }
+	@Override public void enterEncabezado_proc(Anasint.Encabezado_procContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitT(Anasint.TContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterF(Anasint.FContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitF(Anasint.FContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterParExpr(Anasint.ParExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitParExpr(Anasint.ParExprContext ctx) { }
+	@Override public void exitEncabezado_proc(Anasint.Encabezado_procContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

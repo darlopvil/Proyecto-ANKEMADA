@@ -1,12 +1,14 @@
-//Analizador léxico lenguaje P
+// Analizador léxico lenguaje K
 
 lexer grammar Analex;
 
 BLANCO: ' ' ->skip;
 TABULADOR: '\t'->skip;
 FIN_LINEA: '\r'?'\n' ->skip;
+
 fragment DIGITO: [0-9];
 fragment LETRA:[a-zA-Z];
+
 
 //+++++TOKENS GLOBALES+++++
 VARIABLES: 'VARIABLES';
@@ -27,34 +29,41 @@ DEV: 'dev';
 DEF: 'DEF';
 EVAL: 'EVAL';
 BOOLEANO: 'BOOL';
+//TOKENS GLOBALES
+VARIABLES: 'VARIABLES';
+SUBPROGRAMAS: 'SUBPROGRAMAS';
+FUNCION: 'FUNCION';
+PROCEDIMIENTO: 'PROCEDIMIENTO';
+FPROCEDIMIENTO: 'FPROCEDIMIENTO';
+//TIPOS
+NUM: 'NUM';
+LOG: 'LOG';
+SEQ: 'SEQ';
+DEV: 'dev';
 CIERTO: 'cierto';
-FALSO:'falso';
-BREAK: 'break';
-
-//+++++SIMBOLOS+++++
-DOS_PUNTOS: ':';
-PyC:';';
-COMA: ',';
+FALSO: 'falso';
+ENTERO: 'entero';
+BOOLEANO: 'booleano';
+Y: 'O';
+O: 'Y';
+NO: 'NO';
+NUMERO : ('-')?DIGITO+;
+IDENT : LETRA(LETRA|DIGITO|'_')*;
+DP: ':';
+PA : '(';
+PC : ')';
+PyC : ';';
+COMA : ',';
+ASIG: '=';
+MAYOR: '>';
+MENOR: '<';
+IGUAL: '==';
 MAS: '+';
-MENOS:'-';
-POR:'*';
-IGUAL: '=';
-ES_IGUAL: '==';
-DESIGUALDAD: '!=';
-MENOR_QUE:'<';
-MENOR_O_IGUAL:'<=';
-MAYOR_QUE :'>';
-MAYOR_O_IGUAL:'>=';
-CONJUNCION: '&&';
-DISYUNCION: '||';
-NEGACION: '!';
-PA:'(';
-PC:')';
-CA: '[';
-CC: ']';
+MENOS: '-';
+POR: '*';
+DIV: '/';
 COMENTARIO_BLOQUE : '/*' .*? '*/' -> skip ;
 COMENTARIO_LINEA : '//' .*? FIN_LINEA -> skip ;
-
 //+++++TIPOS++++++
 VAR: LETRA(LETRA|DIGITO)*;
 NUMERO: ('-')?DIGITO+;
@@ -63,3 +72,5 @@ NUM: 'NUM';
 LOG: 'LOG';
 SEQ: 'SEQ';
 IDENT: LETRA(LETRA|DIGITO|'_')*;
+COMENTARIO_LINEA : '//' .*? FIN_LINEA -> skip ;
+

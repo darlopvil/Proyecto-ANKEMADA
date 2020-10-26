@@ -45,4 +45,46 @@ public interface AnasintVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitTipo(Anasint.TipoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Anasint#subprogramas}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitSubprogramas(Anasint.SubprogramasContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Anasint#funcion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFuncion(Anasint.FuncionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Anasint#cuerpo}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCuerpo(Anasint.CuerpoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Anasint#params}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitParams(Anasint.ParamsContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Anasint#tipo_func}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipo_func(Anasint.Tipo_funcContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Anasint#procedimiento}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitProcedimiento(Anasint.ProcedimientoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link Anasint#encabezado_proc}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEncabezado_proc(Anasint.Encabezado_procContext ctx);
 }

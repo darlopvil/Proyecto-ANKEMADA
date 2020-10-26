@@ -8,14 +8,18 @@ FIN_LINEA: '\r'?'\n' ->skip;
 
 fragment DIGITO: [0-9];
 fragment LETRA:[a-zA-Z];
-//TOKENS
+//TOKENS GLOBALES
 VARIABLES: 'VARIABLES';
 SUBPROGRAMAS: 'SUBPROGRAMAS';
+FUNCION: 'FUNCION';
+PROCEDIMIENTO: 'PROCEDIMIENTO';
+FPROCEDIMIENTO: 'FPROCEDIMIENTO';
 //TIPOS
 NUM: 'NUM';
 LOG: 'LOG';
 SEQ: 'SEQ';
 
+DEV: 'dev';
 CIERTO: 'cierto';
 FALSO: 'falso';
 ENTERO: 'entero';
@@ -24,7 +28,7 @@ Y: 'O';
 O: 'Y';
 NO: 'NO';
 NUMERO : ('-')?DIGITO+;
-IDENT : LETRA(LETRA|DIGITO)*;
+IDENT : LETRA(LETRA|DIGITO|'_')*;
 DP: ':';
 PA : '(';
 PC : ')';
